@@ -50,15 +50,26 @@ namespace GraficadorSeñales
                 1.0 / frecuenciaMuestreo;
 
             plnGrafica.Points.Clear();
-            for( double i = tiempoInicial;
-                i <= tiempoFinal; 
+
+            for(double i = tiempoInicial;
+                i <= tiempoFinal;
                 i += periodoMuestreo)
             {
+                Muestra muestra =
+                    new Muestra(i,
+                    señal.evaluar(i));
+                señal.Muestras.Add(muestra);
+            }
+
+            foreach(Muestra muestra in señal.Muestras)
+            {
                 plnGrafica.Points.Add(
-                    adaptarCoordenadas(i,
-                    señal.evaluar(i), tiempoInicial)
+                    adaptarCoordenadas(muestra.X,
+                    muestra.Y,tiempoInicial)
                     );
             }
+
+            
 
             plnEjeX.Points.Clear();
             plnEjeX.Points.Add(
