@@ -11,13 +11,7 @@
             <ColumnDefinition Width="55*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Señal Parabólica" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Amplitud:" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="10,52,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Fase:" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="22" Margin="10,96,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Frecuencia:" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="10,144,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Tipo de señal:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="218,34,0,0" TextWrapping="Wrap" Text="Tiempo Inicial:" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="218,52,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="218,80,0,0" TextWrapping="Wrap" Text="Tiempo Final:" VerticalAlignment="Top"/>
@@ -35,6 +29,12 @@
         <TextBlock x:Name="lblLimiteSuperior" HorizontalAlignment="Left" Margin="20,202,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
         <TextBlock x:Name="lblLimiteInferior" HorizontalAlignment="Left" Margin="20,409,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
         <TextBlock HorizontalAlignment="Left" Margin="20,307,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
+        <Grid x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="142" Margin="10,55,0,0" VerticalAlignment="Top" Width="203"/>
+        <ComboBox x:Name="cbTipoSeñal" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="203" SelectedIndex="0" SelectionChanged="CbTipoSeñal_SelectionChanged">
+            <ComboBoxItem>Señal parabolica</ComboBoxItem>
+            <ComboBoxItem>Señal senoidal</ComboBoxItem>
+        </ComboBox>
+        
 
     </Grid>
 </Window>
