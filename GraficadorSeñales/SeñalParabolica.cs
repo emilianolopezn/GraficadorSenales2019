@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace GraficadorSeñales
 {
-    class SeñalParabolica
+    class SeñalParabolica : Señal
     {
-        public List<Muestra> Muestras
-            { get; set; }
-
+        
         public SeñalParabolica()
         {
             Muestras = 
                 new List<Muestra>();
+            AmplitudMaxima = 0.0;
         }
 
-        public double evaluar(double tiempo)
+        override public double evaluar(double tiempo)
         {
             double resultado;
 
