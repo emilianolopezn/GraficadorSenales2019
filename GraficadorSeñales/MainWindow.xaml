@@ -33,6 +33,7 @@
         <ComboBox x:Name="cbTipoSeñal" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="203" SelectedIndex="0" SelectionChanged="CbTipoSeñal_SelectionChanged">
             <ComboBoxItem>Señal parabolica</ComboBoxItem>
             <ComboBoxItem>Señal senoidal</ComboBoxItem>
+            <ComboBoxItem>Señal audio</ComboBoxItem>
         </ComboBox>
         
 
