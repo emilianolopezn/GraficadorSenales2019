@@ -71,6 +71,12 @@ namespace GraficadorSeñales
                         ((ConfiguracionAudio)
                         (panelConfiguracion.Children[0])).txtRutaArchivo.Text;
                     señal = new SeñalAudio(rutaArchivo);
+                    txtTiempoInicial.Text =
+                        señal.TiempoInicial.ToString();
+                    txtTiempoFinal.Text =
+                        señal.TiempoFinal.ToString();
+                    txtFrecuenciaMuestreo.Text =
+                        señal.FrecuenciaMuestreo.ToString();
                     break;
                 default:
                     señal = null;
