@@ -44,6 +44,8 @@ namespace GraficadorSeñales
             {
                 case 0: // Parabolica
                     señal = new SeñalParabolica();
+                
+                
                     break;
                 case 1: //Senoidal
                     double amplitud =
@@ -62,20 +64,33 @@ namespace GraficadorSeñales
                             );
                     señal = 
                         new SeñalSenoidal(amplitud, fase, frecuencia);
+                    
+                    break;
+                case 2:
+                    string rutaArchivo =
+                        ((ConfiguracionAudio)
+                        (panelConfiguracion.Children[0])).txtRutaArchivo.Text;
+                    señal = new SeñalAudio(rutaArchivo);
                     break;
                 default:
                     señal = null;
                     break;
             }
 
-            señal.TiempoInicial =
-                tiempoInicial;
-            señal.TiempoFinal =
-                tiempoFinal;
-            señal.FrecuenciaMuestreo =
-                frecuenciaMuestreo;
+            if (cbTipoSeñal.SelectedIndex != 2 
+                && señal != null)
+            {
+                señal.TiempoInicial =
+                        tiempoInicial;
+                señal.TiempoFinal =
+                    tiempoFinal;
+                señal.FrecuenciaMuestreo =
+                    frecuenciaMuestreo;
 
-            señal.construirSeñal();
+                señal.construirSeñal();
+            }
+
+            
 
             double amplitudMaxima = 
                 señal.AmplitudMaxima;
@@ -138,6 +153,11 @@ namespace GraficadorSeñales
                 case 1: //Senoidal
                     panelConfiguracion.Children.Add(
                         new ConfiguracionSeñalSenoidal());
+                    break;
+                case 2:
+                    panelConfiguracion.Children.Add(
+                        new ConfiguracionAudio()
+                        ) ;
                     break;
                 default:
                     break;
