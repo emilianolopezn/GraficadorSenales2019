@@ -71,6 +71,35 @@ namespace GraficadorSeñales
 
             return resultado;
         }
+
+        public static Señal desplazarAmplitud(
+            Señal señalOriginal, double cantidadDesplazamiento)
+        {
+
+            SeñalResultante resultado =
+                new SeñalResultante();
+            resultado.TiempoInicial = señalOriginal.TiempoInicial;
+            resultado.TiempoFinal = señalOriginal.TiempoFinal;
+            resultado.FrecuenciaMuestreo =
+                señalOriginal.FrecuenciaMuestreo;
+
+            foreach (var muestra in señalOriginal.Muestras)
+            {
+                double nuevoValor = muestra.Y + cantidadDesplazamiento;
+                resultado.Muestras.Add(
+                    new Muestra(
+                        muestra.X,
+                        nuevoValor)
+                    );
+                if (Math.Abs(nuevoValor) > resultado.AmplitudMaxima)
+                {
+                    resultado.AmplitudMaxima =
+                        Math.Abs(nuevoValor);
+                }
+            }
+
+            return resultado;
+        }
     }
 
 }
