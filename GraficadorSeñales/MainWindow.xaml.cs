@@ -24,7 +24,7 @@ namespace GraficadorSeñales
         {
             InitializeComponent();
 
-            
+            mostrarSegundaSeñal(false);
         }
 
         private void BtnGraficar_Click(object sender, RoutedEventArgs e)
@@ -237,6 +237,7 @@ namespace GraficadorSeñales
         private void CbOperacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             panelConfiguracionOperacion.Children.Clear();
+            mostrarSegundaSeñal(false);
             switch(cbOperacion.SelectedIndex)
             {
                 case 0: //Escala de amplitud
@@ -251,8 +252,53 @@ namespace GraficadorSeñales
                             new OperacionDesplazamientoAmplitud()
                         );
                     break;
+                case 2: //Multiplicacion de señales
+                    mostrarSegundaSeñal(true);
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void CbTipoSeñal_2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            panelConfiguracion_2.Children.Clear();
+            switch (cbTipoSeñal_2.SelectedIndex)
+            {
+                case 0: //Parabolica
+                    break;
+                case 1: //Senoidal
+                    panelConfiguracion_2.Children.Add(
+                        new ConfiguracionSeñalSenoidal());
+                    break;
+                case 2:
+                    panelConfiguracion_2.Children.Add(
+                        new ConfiguracionAudio()
+                        );
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void mostrarSegundaSeñal(bool mostrar)
+        {
+            if (mostrar)
+            {
+                lblTipoSeñal_2.Visibility =
+                    Visibility.Visible;
+                cbTipoSeñal_2.Visibility =
+                    Visibility.Visible;
+                panelConfiguracion_2.Visibility =
+                    Visibility.Visible;
+            } else
+            {
+                lblTipoSeñal_2.Visibility =
+                    Visibility.Hidden;
+                cbTipoSeñal_2.Visibility =
+                    Visibility.Hidden;
+                panelConfiguracion_2.Visibility =
+                    Visibility.Hidden;
             }
         }
     }

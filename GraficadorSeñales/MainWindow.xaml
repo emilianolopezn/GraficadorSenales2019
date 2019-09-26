@@ -5,24 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraficadorSeñales"
         mc:Ignorable="d"
-        Title="MainWindow" Height="624.833" Width="812">
+        Title="MainWindow" Height="624.833" Width="893">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="208"/>
+        </Grid.ColumnDefinitions>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Tipo de señal:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="577,16,0,0" TextWrapping="Wrap" Text="Tiempo Inicial:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="577,34,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="577,62,0,0" TextWrapping="Wrap" Text="Tiempo Final:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtTiempoFinal" HorizontalAlignment="Left" Height="22" Margin="577,78,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnGraficar" Content="Graficar" HorizontalAlignment="Left" Margin="719,32,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.156,0.833" Click="BtnGraficar_Click"/>
-        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="186" Margin="218,196,0,0" VerticalAlignment="Top" Width="564" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+        <TextBlock HorizontalAlignment="Left" Margin="85,34,0,0" TextWrapping="Wrap" Text="Tiempo Inicial:" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="85,52,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="85,75,0,0" TextWrapping="Wrap" Text="Tiempo Final:" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtTiempoFinal" HorizontalAlignment="Left" Height="22" Margin="85,96,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button x:Name="btnGraficar" Content="Graficar" HorizontalAlignment="Left" Margin="130,9,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.156,0.833" Click="BtnGraficar_Click" Grid.Column="1"/>
+        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="186" Margin="218,196,0,0" VerticalAlignment="Top" Width="564" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="2">
             <Grid>
                 <Polyline Stroke="CornflowerBlue" StrokeThickness="2" Name="plnGrafica"/>
                 <Polyline Stroke="Black" StrokeThickness="1" Name="plnEjeX" />
                 <Polyline Stroke="Black" StrokeThickness="1" Name="plnEjeY" />
             </Grid>
         </ScrollViewer>
-        <TextBlock HorizontalAlignment="Left" Margin="577,108,0,0" TextWrapping="Wrap" Text="Frecuencia de muestreo:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="577,126,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="85,126,0,0" TextWrapping="Wrap" Text="Frecuencia de muestreo:" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="85,144,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBlock x:Name="lblLimiteSuperior" HorizontalAlignment="Left" Margin="20,202,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
         <TextBlock x:Name="lblLimiteInferior" HorizontalAlignment="Left" Margin="20,349,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
         <TextBlock HorizontalAlignment="Left" Margin="20,277,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="-0.238,0.646" Width="193" TextAlignment="Right"/>
@@ -32,7 +36,7 @@
             <ComboBoxItem>Señal senoidal</ComboBoxItem>
             <ComboBoxItem>Señal audio</ComboBoxItem>
         </ComboBox>
-        <ScrollViewer  x:Name="scrGraficaResultante" HorizontalAlignment="Left" Height="186" Margin="218,398,0,0" VerticalAlignment="Top" Width="564" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer  x:Name="scrGraficaResultante" HorizontalAlignment="Left" Height="186" Margin="218,398,0,0" VerticalAlignment="Top" Width="564" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="2">
             <Grid>
                 <Polyline Stroke="CornflowerBlue" StrokeThickness="2" x:Name="plnGraficaResultante"/>
                 <Polyline Stroke="Black" StrokeThickness="1" x:Name="plnEjeXResultante" />
@@ -46,8 +50,16 @@
         <ComboBox x:Name="cbOperacion" HorizontalAlignment="Left" Margin="208,28,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CbOperacion_SelectionChanged">
             <ComboBoxItem>Escala de amplitud</ComboBoxItem>
             <ComboBoxItem>Desplazamiento de amplitud</ComboBoxItem>
+            <ComboBoxItem>Multiplicación de señales</ComboBoxItem>
         </ComboBox>
-        <Grid x:Name="panelConfiguracionOperacion" HorizontalAlignment="Left" Height="181" Margin="333,10,0,0" VerticalAlignment="Top" Width="239"/>
+        <Grid x:Name="panelConfiguracionOperacion" HorizontalAlignment="Left" Height="181" Margin="333,10,0,0" VerticalAlignment="Top" Width="191"/>
+        <TextBlock x:Name="lblTipoSeñal_2" HorizontalAlignment="Left" Margin="551,7,0,0" TextWrapping="Wrap" Text="Tipo de señal:" VerticalAlignment="Top"/>
+        <Grid x:Name="panelConfiguracion_2" HorizontalAlignment="Left" Height="142" Margin="551,52,0,0" VerticalAlignment="Top" Width="203" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbTipoSeñal_2" HorizontalAlignment="Left" Margin="551,25,0,0" VerticalAlignment="Top" Width="175" SelectedIndex="0" Grid.ColumnSpan="2" SelectionChanged="CbTipoSeñal_2_SelectionChanged">
+            <ComboBoxItem Content="Señal parabolica"/>
+            <ComboBoxItem Content="Señal senoidal"/>
+            <ComboBoxItem Content="Señal audio"/>
+        </ComboBox>
 
 
     </Grid>
